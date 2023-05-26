@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!-- Damian Nasiadko -->
+
+
+<!-- Greetings -->
+<category>
+  <pattern>^ HI ^</pattern>
+  <template>Hello! How can I assist you with chess?</template>
+</category>
+
+<category>
+  <pattern>^ HELLO ^</pattern>
+  <template><srai>^ HI ^</srai></template>
+</category>
+
+<category>
+  <pattern>^ HEY ^</pattern>
+  <template><srai>^ HI ^</srai></template>
+</category>
+
+<category>
+  <pattern>I am *</pattern>
+  <template>
+   Hello <set name = "username"> <star/>! </set>
+   </template>  
+</category>  
+
+<!-- Basic chess information -->
+<category>
+  <pattern>TELL *  CHESS</pattern>
+  <template>Chess is a strategic board game played between two players on a square checkered board. The objective is to checkmate the opponent's king, which means putting it in a position where it is under attack and cannot escape capture. Each player starts with 16 pieces, including a king, a queen, rooks, knights, bishops, and pawns. Each piece has its own unique way of moving across the board. The game combines tactical thinking, foresight, and planning as players aim to outmaneuver their opponents and create favorable positions. Chess is widely played and enjoyed worldwide, with numerous variations, tournaments, and a rich history dating back centuries.</template>
+</category>
+
+<category>
+  <pattern>WHAT IS CHESS</pattern>
+  <template><srai>TELL ME ABOUT CHESS</srai></template>
+</category>
+
+
+
+<!-- Chess rules -->
+
+<category>
+  <pattern>^ PIECES SETUP ^</pattern> <!--HOW ARE THE PIECES SETUP -->
+  <template>
+       <think><set name = "topic">setup</set></think>
+      The pieces are arranged on the board in a specific pattern at the beginning of the game. Shall I explain it in detail?</template>
+</category>
+
+<topic name="setup">
+<category>
+  <pattern>^ YES ^</pattern>
+  <template>
+    The chessboard consists of 64 squares arranged in an 8x8 grid. Each player starts with 16 pieces: one king, one queen, two rooks, two knights, two bishops, and eight pawns. The pawns are placed on the second rank, and the other pieces are placed on the first rank.
+  </template>
+</category>
+<category>
+  <pattern>^ NO ^</pattern>
+  <template>Alright. Let me know if you have any other questions about chess.</template>
+</category>
+</topic>
+
+
+
+<category>
+  <pattern>^ PIECES MOVE ^</pattern>
+  <template>The pieces move in different ways
+  
+  <reply>
+      <text>Pawn</text>
+      <postback>^ pawn ^</postback>
+  </reply>
+  
+    <reply>
+      <text>Bishop</text>
+      <postback>^ bishop ^</postback>
+  </reply>
+  
+    <reply>
+      <text>King</text>
+      <postback>^ king ^</postback>
+  </reply>
+  
+    <reply>
+      <text>Queen</text>
+      <postback>^ queen ^</postback>
+  </reply>
+  
+      <reply>
+      <text>Rook</text>
+      <postback>^ rook ^</postback>
+  </reply>
+  
+      <reply>
+      <text>Knight</text>
+      <postback>^ knight ^</postback>
+  </reply>
+  
+  </template>
+</category>
+
+
+<category>
+    <pattern>^ pawn ^</pattern>
+    <template>
+<image>https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Chess_plt45.svg/2048px-Chess_plt45.svg.png</image>
+    The pawn moves forward one square, but captures diagonally. It has different rules for the first move and capturing.
+            <reply>
+      <text>others</text>
+      <postback>^ PIECES MOVE ^</postback>
+  </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>^ bishop ^</pattern>
+    <template>
+<image>https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Chess_blt45.svg/1200px-Chess_blt45.svg.png</image>
+    The bishop can move any number of squares diagonally.
+                <reply>
+      <text>others</text>
+      <postback>^ PIECES MOVE ^</postback>
+  </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>^ king ^</pattern>
+    <template>
+<image>https://e7.pngegg.com/pngimages/823/832/png-clipart-chess-piece-king-queen-pawn-king-miscellaneous-king.png</image>
+    The king can move one square in any direction.
+                <reply>
+      <text>others</text>
+      <postback>^ PIECES MOVE ^</postback>
+  </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>^ queen ^</pattern>
+    <template>
+<image>https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Chess_qdt45.svg/800px-Chess_qdt45.svg.png</image>
+    The queen can move any number of squares in any direction.
+                <reply>
+      <text>others</text>
+      <postback>^ PIECES MOVE ^</postback>
+  </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>^ rook ^</pattern>
+    <template>
+<image>https://as1.ftcdn.net/v2/jpg/02/29/00/28/1000_F_229002812_Ky1ZAqZCaKC56sSJCALUO2hZ0klwlWUv.jpg</image>
+    The rook can move any number of squares horizontally or vertically.
+                <reply>
+      <text>others</text>
+      <postback>^ PIECES MOVE ^</postback>
+  </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>^ knight ^</pattern>
+    <template>
+<image>https://ih1.redbubble.net/image.1735683740.6888/st,small,507x507-pad,600x600,f8f8f8.jpg</image>
+    The knight moves to any of the squares adjacent to it and then makes a separate move to one of the squares two squares away from its current position.
+                <reply>
+      <text>others</text>
+      <postback>^ PIECES MOVE ^</postback>
+  </reply>
+    </template>
+</category>
+
+
+
+
+
+<!-- Chess strategies -->
+<category>
+    <pattern>^ SHOW OPENINGS ^</pattern>
+    <template>
+               Italian Game, Ruy Lopez, Sicilian Defense, French Defense, Kings Gambit, Nimzo-Indian Defense, English Opening, Kings Indian Defense, Caro-Kann Defense, Scandinavian Defense, Slav Defense, Alekhines Defense, Dutch Defense, Scandinavian Defense, Pirc Defense, Scandinavian Gambit, Budapest Gambit, Benoni Defense, Scandinavian Gambit, Scotch Game, Halloween Gambit, Danish Gambit, Fried Liver Attack, Latvian Gambit, Albin Counter-Gambit, Leningrad Dutch Defense, Najdorf Opening, Dragon Variation, Sveshnikov Variation, Taimanov Variation, Scheveningen Variation, Accelerated Dragon.
+    </template>
+</category>
+
+<category>
+    <pattern>what opening is *</pattern>
+    <template><map name="openings"><star/></map></template>
+</category>
+
+<category>
+    <pattern>IS <set>openings</set> an opening ^</pattern>
+    <template>Yes. <star/> is an opening</template>
+</category>
+
+
+<category>
+  <pattern>^ COMMON OPENINGS ^</pattern>
+  <template>There are various popular chess openings, such as the Italian Game, Ruy Lopez, Sicilian Defense, and French Defense. Which one would you like to know more about?
+  
+  <reply>
+      <text>Italian Game</text>
+      <postback>italian</postback>
+  </reply>
+  
+    <reply>
+      <text>Ruy Lopez</text>
+      <postback>lopez</postback>
+  </reply>
+  
+    <reply>
+      <text>Sicilian Defense</text>
+      <postback>sicilian</postback>
+  </reply>
+  
+    <reply>
+      <text>French Defense</text>
+      <postback>french</postback>
+  </reply>
+  
+  </template>
+</category>
+
+
+<category>
+    <pattern>italian</pattern>
+    <template>The Italian Game is a chess opening that begins with the moves 1.e4 e5 2.Nf3 Nc6 3.Bc4. It aims to control the center of the board and develop the pieces harmoniously. 
+        <reply>
+      <text>others</text>
+      <postback>^ COMMON OPENINGS ^</postback>
+  </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>lopez</pattern>
+    <template>The Ruy Lopez is a popular chess opening that begins with the moves 1.e4 e5 2.Nf3 Nc6 3.Bb5. It is named after a Spanish bishop, Ruy López de Segura, who wrote one of the first books on chess in 1561. The Ruy Lopez is known for its strategic complexity and has been played by countless chess champions throughout history.
+            <reply>
+      <text>others</text>
+      <postback>^ COMMON OPENINGS ^</postback>
+  </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>sicilian</pattern>
+    <template>The Sicilian Defense is one of the most popular and aggressive chess openings for Black. It arises after the moves 1.e4 c5. The Sicilian Defense is named after the Italian island of Sicily and is known for its tactical complexity and dynamic counterattacking possibilities.
+            <reply>
+      <text>others</text>
+      <postback>^ COMMON OPENINGS ^</postback>
+  </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>french</pattern>
+    <template>The French Defense is a popular chess opening for Black that arises after the moves 1.e4 e6. It is known for its solid and strategic nature, as well as its emphasis on pawn structure and piece coordination.
+            <reply>
+      <text>others</text>
+      <postback>^ COMMON OPENINGS ^</postback>
+  </reply>
+    </template>
+</category>
+
+
+<category>
+  <pattern>^ CHESS ENDGAMES ^</pattern>
+  <template>Chess endgames occur in the later stages of the game when most of the pieces have been exchanged. Endgame strategy focuses on pawn promotion, king activity, and zugzwang (a situation where any move weakens the player's position). Endgames can be complex and require careful calculation and technique.</template>
+</category>
+
+<category>
+  <pattern>^ CHESS BOOKS ^</pattern>
+  <template>There are many great chess books available that can help improve your skills. Some popular recommendations include "My System" by Aron Nimzowitsch, "The Amateur's Mind" by Jeremy Silman, and "Silman's Complete Endgame Course" by Jeremy Silman. Additionally, online resources like Chess.com and Lichess.org offer interactive lessons, puzzles, and opportunities to play against other players.</template>
+</category>
+
+
+<!-- Chess websites -->
+<category>
+    <pattern>^ chess websites ^</pattern>
+    <template>
+        Here!
+        <button>
+            <text>Chesscom</text>
+            <url>https://www.chess.com/pl</url>
+        </button>
+        
+        <button>
+            <text>Lichess</text>
+            <url>https://lichess.org/pl</url>
+        </button>
+    </template>
+</category>
+
+<!-- szachisci -->
+<category>
+    <pattern>who is *</pattern>
+    <template><map name="players"><star/></map></template>
+</category>
+
+
+
+<category>
+  <pattern>^ chess players ^</pattern>
+  <template> Best chess players
+
+  <reply>
+      <text>Magnus Carlsen</text>
+      <postback>Carlsen</postback>
+  </reply>
+  
+    <reply>
+      <text>Jan Krzysztof Duda</text>
+      <postback>Duda</postback>
+  </reply>
+  
+    <reply>
+      <text>Ding Liren</text>
+      <postback>Liren</postback>
+  </reply>
+
+  </template>
+</category>
+
+<category>
+    <pattern>Carlsen</pattern>
+    <template>
+        <image>https://ipla.pluscdn.pl/dituel/cp/67/67mtp3dh9sa21gf6ksfzcz2funcgembx.jpg</image>
+        Magnus Carlsen is a Norwegian chess grandmaster and the reigning World Chess Champion. He was born on November 30, 1990, in Tonsberg, Norway. Carlsen first gained international recognition in 2004 when he became a grandmaster at the age of 13, making him one of the youngest grandmasters in history. He has since dominated the chess world and achieved numerous records and accomplishments.
+            <reply>
+      <text>others</text>
+      <postback>^ chess players ^</postback>
+  </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>Duda</pattern>
+    <template>
+        <image>https://jkduda.pl/wp-content/uploads/2021/11/baner_glowny_logotypy.jpg</image>
+        Jan-Krzysztof Duda is a Polish chess grandmaster. He was born on April 26, 1998, in Kraków, Poland. Duda is known for his aggressive and tactical playing style, often employing dynamic and creative strategies in his games. Duda achieved the title of Grandmaster in 2013 at the age of 15, making him one of the youngest Polish players to reach that milestone. He has represented Poland in several Chess Olympiads and has been a key contributor to the team's success.
+            <reply>
+      <text>others</text>
+      <postback>^ chess players ^</postback>
+  </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>Liren</pattern>
+    <template>
+        <image>https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Ding_Liren_in_2023.jpg/1200px-Ding_Liren_in_2023.jpg</image>
+        Ding Liren is the current world champion, Chinese chess grandmaster. He was born on October 24, 1992, in Wenzhou, China. Ding is widely regarded as one of the strongest chess players in the world. He achieved the title of Grandmaster in 2009 at the age of 16, making him one of the youngest Chinese players to reach that milestone.
+            <reply>
+      <text>others</text>
+      <postback>^ chess players ^</postback>
+  </reply>
+    </template>
+</category>
+
+
+<!-- Streamerzy -->
+<category>
+  <pattern>^ chess streamers ^</pattern>
+  <template> Most popular  chess streamers
+  
+  <reply>
+      <text>Hikaru Nakamura</text>
+      <postback>^ Nakamura ^</postback>
+  </reply>
+  
+    <reply>
+      <text>xntentacion</text>
+      <postback>^ xntentacion ^</postback>
+  </reply>
+  
+    <reply>
+      <text>Alexandra Botez</text>
+      <postback>^ Botez ^</postback>
+  </reply>
+
+  </template>
+</category>
+
+<category>
+    <pattern>^ Nakamura ^</pattern>
+    <template>
+        <image>https://global-uploads.webflow.com/5f1af76ed86d6771ad48324b/63f6f3414180236364878c0b_Nakamura_Hikaru.png</image>
+        Hikaru Nakamura, commonly known as Hikaru, is a renowned American chess grandmaster. He was born on December 9, 1987, in Hirakata, Japan, and moved to the United States at a young age. Hikaru's chess journey began at the age of seven when he learned the game from his older brother.
+            <reply>
+      <text>others</text>
+      <postback>^ chess streamers ^</postback>
+  </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>^ xntentacion ^</pattern>
+    <template>
+        <image>https://ocdn.eu/sport-images-transforms/1/NVJk9lBaHR0cHM6Ly9vY2RuLmV1L3B1bHNjbXMvTURBXy9hNDliYmNiMmRhOGMxNzRkYTAzZWEwODA2MDViZjBiOC5qcGeTlQMbAM0Co80BfJUCzQSwAMLDkwmmMTliNWFiBt4AAqEwAaExAQ/bartosz-xntentacion-rudecki.jpg</image>
+        The biggest Polish chess streamer. In just a few months he became an Internet star, all thanks to... chess. He attracted viewers to his live broadcasts with sincerity and charisma.
+            <reply>
+      <text>others</text>
+      <postback>^ chess streamers ^</postback>
+  </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>^ Botez ^</pattern>
+    <template>
+        <image>https://wptmedia.wpt.com/wp-content/uploads/2023/02/Alexandra-Botez.jpg</image>
+        Alexandra Botez is a well-known chess streamer and content creator. She is also a Woman FIDE Master (WFM) and has represented Canada in various chess competitions. Alexandra, along with her sister Andrea Botez, runs the popular BotezLive Twitch channel, where they stream chess content, including online matches, puzzles, and commentary. Alexandra is known for her entertaining and educational approach to chess streaming, making the game accessible to a wide audience. She has a strong online presence and has been influential in promoting chess to a broader community through her engaging content and collaborations with other streamers and chess players.
+            <reply>
+      <text>others</text>
+      <postback>^ chess streamers ^</postback>
+  </reply>
+    </template>
+</category>
+
+
+<!-- Fun facts about chess -->
+<category>
+  <pattern>^ fun facts ^</pattern>
+    <template>
+    <random>
+      <li>The longest game of chess ever recorded took place in 1989 and lasted for 269 moves. It ended in a draw due to the fifty-move rule, which states that a game can be declared a draw if no capture or pawn move has been made in the last fifty moves.!</li>
+      <li>The first modern chess tournament was held in London in 1851, and it was won by Adolf Anderssen, a German chess master.</li>
+      <li>The word "checkmate" in chess comes from the Persian phrase "shah mat," which means "the king is defeated" or "the king is dead."</li>
+      <li>The youngest undisputed World Chess Champion in history is Garry Kasparov. He achieved this feat in 1985 at the age of 22.</li>
+       <li>The highest recorded chess rating achieved by a player is 2882, held by Magnus Carlsen of Norway. He achieved this rating in 2014.</li>
+       <li>The knight is the only chess piece that can "jump" over other pieces on the board.</li>
+       <li>The term "Grandmaster" in chess was first officially awarded by FIDE (World Chess Federation) in 1950. The first three recipients of the title were Gideon Ståhlberg, Max Euwe, and Miguel Najdorf.</li>
+       <li>The first female player to compete in the World Chess Championship was Nona Gaprindashvili from Georgia. She qualified for the Candidates Tournament in 1973.</li>
+       <li>The number of possible unique chess games is estimated to be more than the number of atoms in the observable universe!</li>
+        <li>Chess is often referred to as "the game of kings" because it was historically associated with nobility and intellectual prowess.</li>
+    </random>
+  </template>
+</category>
+
+
+
+<!-- Default response -->
+<category>
+  <pattern>*</pattern>
+  <template>
+      <think><set name = "topic">default</set></think>
+      Sorry, I didn't quite understand. Could you please rephrase or ask another question about chess?</template>
+</category>
+
+</aiml>
